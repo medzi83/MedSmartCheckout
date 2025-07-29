@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/component/line-item/line-item.html.twig' %}
+
+{% block component_line_item_type_include %}
+        {% if isProduct %}
+            {% sw_include '@Storefront/storefront/component/line-item/type/med-product.html.twig' %}
+        {% elseif isDiscount %}
+            {% sw_include '@Storefront/storefront/component/line-item/type/med-discount.html.twig' %}
+        {% elseif isContainer %}
+            {% sw_include '@Storefront/storefront/component/line-item/type/container.html.twig' %}
+        {% else %}
+            {% sw_include '@Storefront/storefront/component/line-item/type/generic.html.twig' %}
+        {% endif %}
+{% endblock %}
+

@@ -1,0 +1,8 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/confirm-shipping.html.twig' %}
+
+{% block page_checkout_confirm_shipping_title %}
+                <div class="card-title">
+                    {{ 'checkout.confirmShippingMethod'|trans|sw_sanitize }}
+                </div>
+                <p class="hinweis-zahlung-versand"> {{ 'checkout.medConfirmShippingHinweis'|trans|sw_sanitize }} </p>
+            {% endblock %}

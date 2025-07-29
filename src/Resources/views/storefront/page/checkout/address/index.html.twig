@@ -1,0 +1,199 @@
+{% sw_extends '@Storefront/storefront/page/checkout/address/index.html.twig' %}
+
+{% block page_checkout_main_content %}
+<div class="med-checkout-address register-login-container">
+    {% block page_checkout_address %}
+        {% block page_checkout_address_header %}
+            <div class="headline-nr"><span class="points">1</span><h2 class="address-main-header">
+                {{ 'checkout.medAddressHeader'|trans|sw_sanitize }}
+            </h2>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const loginToggle = document.querySelector('.login-collapse-toggle');
+                    const registerToggle = document.querySelector('.register-collapse-toggle');
+                    const loginCollapse = document.querySelector('#loginCollapse');
+                    const registerCollapse = document.querySelector('#registerCollapse');
+
+                    // Funktion zum Schließen des anderen Formulars
+                    function closeOtherCollapse(currentCollapse, otherCollapse) {
+                        if (otherCollapse.classList.contains('show')) {
+                            const bsCollapse = new bootstrap.Collapse(otherCollapse, {
+                                toggle: false
+                            });
+                            bsCollapse.hide();
+                        }
+                    }
+
+                    // Event-Listener für Login-Toggle
+                    loginToggle.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        // Nur ausführen, wenn das Login-Formular nicht sichtbar ist
+                        if (!loginCollapse.classList.contains('show')) {
+                            closeOtherCollapse(loginCollapse, registerCollapse);
+                            const bsCollapse = new bootstrap.Collapse(loginCollapse, {
+                                toggle: true
+                            });
+                        }
+                    });
+
+                    // Event-Listener für Register-Toggle
+                    registerToggle.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        // Nur ausführen, wenn das Registrierungs-Formular nicht sichtbar ist
+                        if (!registerCollapse.classList.contains('show')) {
+                            closeOtherCollapse(registerCollapse, loginCollapse);
+                            const bsCollapse = new bootstrap.Collapse(registerCollapse, {
+                                toggle: true
+                            });
+                        }
+                    });
+
+                    // Animation bei Collapse-Events
+                    loginCollapse.addEventListener('show.bs.collapse', function () {
+                        loginCollapse.style.visibility = 'visible';
+                        loginCollapse.classList.add('slide-in-right');
+                        loginCollapse.classList.remove('slide-out-right');
+                    });
+                    loginCollapse.addEventListener('hide.bs.collapse', function () {
+                        loginCollapse.classList.add('slide-out-right');
+                        loginCollapse.classList.remove('slide-in-right');
+                        // Verzögerung, um Animation abzuschließen
+                        setTimeout(() => {
+                            loginCollapse.style.visibility = 'hidden';
+                        }, 300);
+                    });
+
+                    registerCollapse.addEventListener('show.bs.collapse', function () {
+                        registerCollapse.style.visibility = 'visible';
+                        registerCollapse.classList.add('slide-in-left');
+                        registerCollapse.classList.remove('slide-out-left');
+                    });
+                    registerCollapse.addEventListener('hide.bs.collapse', function () {
+                        registerCollapse.classList.add('slide-out-left');
+                        registerCollapse.classList.remove('slide-in-left');
+                        // Verzögerung, um Animation abzuschließen
+                        setTimeout(() => {
+                            registerCollapse.style.visibility = 'hidden';
+                        }, 300);
+                    });
+                });
+            </script>
+        {% endblock %}
+
+        {% block page_checkout_address_toggle %}
+            <div class="register-login-toggle mb-3 d-flex justify-content-between">
+                <a href="#registerCollapse"
+                       class="register-collapse-toggle"
+                       data-target="register"
+                       aria-controls="registerCollapse">
+                    <div class="register-toggle-wrapper">
+                        {% sw_icon 'avatar' %}
+                    
+                        <strong>{{ 'account.medRegisterLink'|trans|sw_sanitize }}</strong>
+                    
+                    </div>
+                </a>
+                <a href="#loginCollapse"
+                       class="login-collapse-toggle"
+                       data-target="login"
+                       aria-controls="loginCollapse">
+                    <div class="login-toggle-wrapper">
+                        {% sw_icon 'log-in' %}
+                    
+                        <strong>{{ 'account.medLoginLink'|trans|sw_sanitize }}</strong>
+                   
+                    </div>
+                </a>
+            </div>
+        {% endblock %}
+        <div class="form-collapse-container position-relative">
+            {# Login-Bereich #}
+            {% block page_checkout_address_login %}
+                <div class="collapse form-collapse login-collapse" id="loginCollapse">
+                    {% block page_checkout_address_login_card %}
+                        {% sw_include '@Storefront/storefront/component/account/login.html.twig' with {
+                            cardTitle: 'account.loginHeader'|trans|sw_sanitize
+                        } %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {# Registrierungs-Bereich #}
+            {% block page_checkout_address_register %}
+                <div class="form-collapse register-collapse collapse show" id="registerCollapse">
+                    {% block page_checkout_address_register_card %}
+                        {% sw_include '@Storefront/storefront/page/checkout/address/register.html.twig' with {
+                            cardTitle: 'checkout.addressRegisterCardTitle'|trans|sw_sanitize
+                        } %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+</div>
+
+    {# Neu eingefügte Zahlung und Versand #}
+    {% block page_checkout_med_additional_info %}
+        {% block page_checkout_confirm_payment_shipping %}
+                <div class="confirm-payment-shipping">
+                {% block page_checkout_payment_shipping_header %}
+                    <div class="headline-nr"><span class="points">2</span><h2 class="address-main-header">
+                        {{ 'checkout.medPaymentShippingHeader'|trans|sw_sanitize }}
+                    </h2></div>
+                {% endblock %}
+                    <div class="row">
+                        {% block page_checkout_confirm_payment %}
+                            <div class="col-sm-6 confirm-payment">
+                                {% sw_include '@Storefront/storefront/page/checkout/confirm/med-confirm-payment.html.twig' %}
+                            </div>
+                        {% endblock %}
+
+                        {% block page_checkout_confirm_shipping %}
+                            {% set PHYSICAL_STATE = constant('Shopware\\Core\\Content\\Product\\State::IS_PHYSICAL') %}
+                            {% if page.cart.lineItems.hasLineItemWithState(PHYSICAL_STATE) %}
+                                <div class="col-sm-6 confirm-shipping">
+                                    {% sw_include '@Storefront/storefront/page/checkout/confirm/med-confirm-shipping.html.twig' %}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+    {% endblock %}
+    
+{% endblock %}
+{# Warenkorb und Zusammenfassung #}
+{% block page_checkout_aside_summary %}
+    <div class="headline-nr"><span class="points">3</span><h2 class="address-main-header">
+                {{ 'checkout.medZusammenfassungHeader'|trans|sw_sanitize }}
+            </h2>
+            </div>
+
+    {% block page_checkout_address_products %}
+            {% block page_checkout_confirm_table_header %}
+
+                                <div class="card-title">
+                                 {{ 'checkout.medCartHeaderInfo'|trans|sw_sanitize }}
+                                
+                                </div>
+                                       
+            {% endblock %}
+            {% block page_checkout_address_products_header %}
+                
+            {% endblock %}
+        {{ parent()}}
+    {% endblock %}
+
+    <div class="checkout-aside-summary">
+        {% block page_checkout_summary_header %}
+            <h2 class="checkout-aside-summary-header">
+                {{ 'checkout.summaryHeader'|trans|sw_sanitize }}
+            </h2>
+        {% endblock %}
+
+        {% block page_checkout_summary_list %}
+            {{ parent()}}
+        {% endblock %}
+    </div>
+{% endblock %}

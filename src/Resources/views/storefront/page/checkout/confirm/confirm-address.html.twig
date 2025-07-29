@@ -1,0 +1,110 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/confirm-address.html.twig' %}
+
+
+
+    {% block page_checkout_confirm_address %}
+        <div class="row js-confirm-overview-addresses">
+            {% block page_checkout_confirm_address_shipping %}
+                {% if page.cart is defined %}
+                    {% set lineItems = page.cart.lineItems %}
+                {% endif %}
+                {% if page.order is defined %}
+                    {% set lineItems = page.order.lineItems %}
+                {% endif %}
+                {% if not page.isHideShippingAddress() %}
+                    <div class="col-sm-6 card-col confirm-shipping-address">
+                        <div class="card checkout-card">
+                            <div class="card-body">
+                                {% block page_checkout_confirm_address_shipping_title %}
+                                    <div class="headline-nr"><span class="points">1</span><h2 class="address-main-header">
+                                        {{ 'checkout.medAddressHeader'|trans|sw_sanitize }}
+                                    </h2>
+                                    </div>
+                                    <div class="card-title">
+                                    
+                                        {{ 'checkout.shippingAddressHeader'|trans|sw_sanitize }}
+                                        {# Ändern Button #}
+                                        {% block page_checkout_confirm_address_shipping_actions %}
+                                            {% set addressManagerOptions = {
+                                                initialTab: 'shipping',
+                                                activeShippingAddressId: shippingAddress.id,
+                                                addressManagerUrl: path('frontend.account.addressmanager.get'),
+                                                addressSwitchUrl: path('frontend.account.address.switch-default'),
+                                            } %}
+
+                                            <div class="card-actions">
+                                                {% block page_checkout_confirm_address_shipping_actions_link %}
+                                                    <a href="{{ path('frontend.account.address.edit.page', {addressId: shippingAddress.id}) }}"
+                                                    title="{{ 'account.overviewChangeShipping'|trans|striptags }}"
+                                                    class="btn btn-light"
+                                                    data-address-manager="true"
+                                                    data-address-manager-options="{{ addressManagerOptions|json_encode }}"
+                                                    >
+                                                        {{ 'account.medOverviewChangeShipping'|trans|sw_sanitize }}
+                                                    </a>
+                                                {% endblock %}
+                                            </div>
+                                        {% endblock %}
+
+                                    </div>
+                                {% endblock %}
+
+                                {% block page_checkout_confirm_address_shipping_data %}
+                                    
+                                    {{ parent()}}
+
+                                {% endblock %}
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endblock %}
+
+            {% block page_checkout_confirm_address_billing %}
+                <div class="col-sm-6 card-col confirm-billing-address">
+                    <div class="card checkout-card">
+                        <div class="card-body">
+                            {% block page_checkout_confirm_address_billing_title %}
+                                <div class="card-title">
+                                    {{ 'checkout.billingAddressHeader'|trans|sw_sanitize }}
+                                    {# Ändern Button #}
+                                    {% block page_checkout_confirm_address_billing_actions %}
+                                        <div class="card-actions">
+                                            {% set addressManagerOptions = {
+                                                initialTab: 'billing',
+                                                addressId: billingAddress.id,
+                                                addressManagerUrl: path('frontend.account.addressmanager.get'),
+                                                addressSwitchUrl: path('frontend.account.address.switch-default'),
+                                            } %}
+
+                                            {% block page_checkout_confirm_address_billing_actions_link %}
+                                                <a href="{{ path('frontend.account.address.edit.page', {addressId: billingAddress.id}) }}"
+                                                title="{{ 'account.overviewChangeBilling'|trans|striptags }}"
+                                                class="btn btn-light"
+                                                data-address-manager="true"
+                                                data-address-manager-options="{{ addressManagerOptions|json_encode }}"
+                                                >
+                                                    {{ 'account.medOverviewChangeBilling'|trans|sw_sanitize }}
+                                                </a>
+                                            {% endblock %}
+                                        </div>
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+
+                            {% block page_checkout_confirm_address_billing_data %}
+                                
+                                {{ parent() }}
+
+                            {% endblock %}
+
+                            
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+

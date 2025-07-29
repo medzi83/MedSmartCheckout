@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/Framework/Plugin/Composer/Schema/plugin-2.0.xsd">
+    <name>SmartCheckout</name>
+    <composer-name>med/smart-checkout</composer-name>
+    <version>1.0.0</version>
+    <license>MIT</license>
+    <author>
+        <name>Michael Medzech</name>
+        <email>info@54north.solutions</email>
+    </author>
+    <label>
+        <label>Smart Checkout</label>
+        <label lang="de-DE">Smart Checkout</label>
+        <label lang="en-GB">Smart Checkout</label>
+    </label>
+    <description>
+        <description>Optimiert den Checkout-Prozess durch Neuanordnung der Felder.</description>
+        <description lang="de-DE">Optimiert den Checkout-Prozess durch Neuanordnung der Felder.</description>
+        <description lang="en-GB">Optimizes the checkout process by rearranging fields.</description>
+    </description>
+    <changelog version="1.0.0">
+        <changes lang="de-DE">Erste Version des Smart Checkout Plugins.</changes>
+        <changes lang="en-GB">Initial release of the Smart Checkout Plugin.</changes>
+    </changelog>
+</plugin>

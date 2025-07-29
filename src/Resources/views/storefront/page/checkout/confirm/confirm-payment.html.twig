@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/confirm-payment.html.twig' %}
+
+
+            {% block page_checkout_confirm_payment_title %}
+                <div class="headline-nr"><span class="points">2</span><h2 class="address-main-header">
+                        {{ 'checkout.medPaymentShippingHeader'|trans|sw_sanitize }}
+                    </h2></div>
+                
+                <div class="card-title">
+                    {{ 'checkout.confirmPaymentMethod'|trans|sw_sanitize }}
+                </div>
+            {% endblock %}

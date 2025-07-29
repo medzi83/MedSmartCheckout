@@ -1,0 +1,361 @@
+
+@media (min-width: 992px) {
+    .is-act-confirmpage .checkout .checkout-main {
+        margin-left: 0px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        // gap: 1%;
+        justify-content: space-between;
+    }
+
+    .confirm-tos {
+        width: 100%;
+        
+        padding: 1%;
+        margin-bottom: 5px;
+    }
+
+    .confirm-address .row {
+        flex-direction: column;
+    }
+
+    .confirm-address,
+    .confirm-payment-shipping,
+    .confirm-product {
+        width: 32.5%;
+        border: 1px solid var(--bs-primary);
+        padding: 1%;
+        .col-sm-6 {
+            width: 100%;
+        }
+    }
+    .is-act-confirmpage .checkout .checkout-additional {
+        margin-left: 0px;
+    }
+}
+
+.address-manager-modal {
+        overflow: auto;
+}
+
+.is-act-confirmpage .card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 52px;
+}
+
+
+
+.med-line-item {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+@media (min-width: 576px) {
+    .med-cart .line-item-product{
+        .line-item-info {
+            width: 100%;
+            .line-item-details {
+                width: 69%;
+            }
+        }
+        .med-item-tax,
+        .line-item-price,
+        .line-item-quantity {
+            width: auto;
+        }
+        .line-item-quantity .btn,
+        .quantity-selector-group .quantity-selector-group-input {
+            line-height: 0.5rem;
+        }
+        .form-control {
+            padding: 0.25rem 0.4rem;
+        }
+        .quantity-selector-group .btn-outline-light svg {
+            top: 0px;
+        }
+        .line-item-unit-price-label, .line-item-tax-price-label, .line-item-total-price-label {
+            display: none;
+        }
+        
+    }
+
+    .med-cart .line-item-promotion {
+        .line-item-info {
+            max-width: 37%
+        }
+        .line-item-remove {
+            width: 52px;
+        }
+        .line-item-row {
+            justify-content: space-between;
+        }
+    }
+}
+
+.med-line-item-price {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    order: 2;
+    flex-wrap: wrap;
+}
+
+.med-checkout-aside-summary {
+    
+    background-image: linear-gradient(90deg, color-mix(in srgb, var(--bs-primary) 8%, transparent) 0%, color-mix(in srgb, var(--bs-primary) 24%, transparent) 80%);
+    dl {
+        margin-bottom: 0rem;
+    }
+}
+
+.med-checkout-header {
+    margin-right: auto;
+    width: 100%;
+    
+}
+
+.checkout-card .card-actions {
+    border: 1px solid var(--bs-primary);
+}
+
+@media (max-width: 575.98px) {
+    .med-cart {
+        .line-item-info-img {
+            order: 1;
+        }
+        .line-item-details {
+            order: 3;
+        }
+        .line-item-remove {
+            order: 2;
+        }
+        .med-line-item {
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .line-item-info {
+            width: 100%;
+        }
+        .line-item-quantity-label,
+        .line-item-tax-price-label {
+            display: none;
+        }
+        .line-item-quantity-select-wrapper {
+            width: 100%;;
+        }
+    }
+    .is-act-confirmpage .checkout, {
+    padding-top: 0px;
+    }
+    .confirm-address,
+    .is-act-confirmpage .confirm-payment-shipping,
+    .confirm-product {
+    padding: 10px 10px;
+    border: 1px solid var(--bs-primary);
+    }
+}
+
+
+.points {
+    background: color-mix(in srgb, var(--bs-primary) 20%, transparent);
+    border: 1px solid;
+    
+    width: 2rem;
+    display: inline-block;
+    text-align: center;
+    height: 2rem;
+    vertical-align: bottom;
+    align-content: center;
+    margin-right: 0.5rem;
+    font-weight: 600;
+}    
+
+// Register Page
+
+.form-group {
+    margin-bottom: 8px;
+}
+
+@media (min-width: 992px) {
+    .is-act-checkoutregisterpage .checkout {
+
+        .checkout-main {
+            width: 66%;
+            display:flex;
+            padding-right: 0%;
+            justify-content: space-around;
+            .confirm-payment-shipping {
+                width: 48%;
+                margin-right: 1%;
+                margin-left: 1%;
+                height: 100%;
+            }
+        }
+        .checkout-aside {
+            border: 1px solid var(--bs-primary);
+            padding: 1%;
+        }
+        .med-checkout-address {
+            width: 49%;
+            
+            padding: 1%;
+            border: 1px solid var(--bs-primary);
+            .register-personal .col-md-3 {
+                width: 50%;
+            }
+        }
+        .line-item-total-price-value {
+        margin-left: auto;
+        }
+        
+    }
+}
+
+.is-act-checkoutregisterpage .checkout {
+    .checkout-aside {
+            border: 1px solid var(--bs-primary);
+            padding: 10px;
+        }
+        .med-checkout-address {
+            width: 49%;
+            
+            padding: 10px;
+            border: 1px solid var(--bs-primary);
+        }
+        padding-top: 0px;
+    
+   .headline-nr {
+    display: flex;
+   }
+   .line-item-quantity-label {
+    text-align: end;
+   }
+
+    .hinweis-zahlung-versand {
+    font-style: italic;
+    }
+    .register-login-toggle {
+        display: flex;
+        justify-content: space-between;
+    }
+    .register-collapse-toggle,
+    .login-collapse-toggle {
+        width: 47%;
+        padding: 2%;
+        border: 1px solid var(--bs-primary);
+        .icon {
+            height: auto;
+            width: 2rem;
+            float: left;
+            margin-right: 15px;
+        }
+    }
+    .register-toggle-wrapper,
+    .login-toggle-wrapper {
+        display: flex;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .is-act-checkoutregisterpage .checkout {
+        .med-checkout-address {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .confirm-payment-shipping .row {
+            display: none;
+        }
+        .checkout-aside {
+            display: unset;
+            border: none;
+            padding: 0px;
+            padding-right: calc(var(--bs-gutter-x) * .5);
+            padding-left: calc(var(--bs-gutter-x) * .5);
+            .card-title,
+            .checkout-aside-summary,
+            .checkout-aside-products {
+                display: none;
+            }
+        }
+        .checkout-main {
+            margin-bottom: -1.5rem;
+        }
+    }
+}
+
+
+// Adress-Container Slider
+   .form-collapse-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-collapse {
+            
+            width: 100%;
+            transition: transform 0.3s ease-in-out;
+            visibility: hidden; /* Versteckt das Formular standardmäßig */
+        }
+
+        .login-collapse {
+            transform: translateX(-100%);
+        }
+
+        .register-collapse {
+            transform: translateX(100%);
+        }
+
+        .form-collapse.show {
+            transform: translateX(0);
+            visibility: visible;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.3s ease-in-out forwards;
+        }
+
+        .slide-out-left {
+            animation: slideOutLeft 0.3s ease-in-out forwards;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.3s ease-in-out forwards;
+        }
+
+        .slide-out-right {
+            animation: slideOutRight 0.3s ease-in-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes slideOutLeft {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes slideOutRight {
+            from { transform: translateX(0); }
+            to { transform: translateX(100%); }
+        }
+
+
+        // Bestellbestätigung
+
+        .finish-address,
+        .finish-order-details
+            { 
+                .card-title {
+                margin-top: 15px;
+                }
+        }

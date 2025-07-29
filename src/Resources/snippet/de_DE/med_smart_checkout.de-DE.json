@@ -1,0 +1,17 @@
+{
+  "account": {
+    "medOverviewChangeShipping": "ändern",
+    "medOverviewChangeBilling": "ändern",
+    "medRegisterLink": "Neu hier? Jetzt registrieren",
+    "medLoginLink": "Ich bin bereits Kunde"
+  },
+  "checkout": {
+    "medCartHeaderInfo" : "Produkte",
+    "medQuantity": "Menge",
+    "medPaymentShippingHeader": "Zahlung und Versand",
+    "medAddressHeader": "Persönliche Daten",
+    "medZusammenfassungHeader": "Bestellübersicht",
+    "medConfirmPaymentHinweis": "Ist nach Eingabe der persönlichen Daten sichtbar.",
+    "medConfirmShippingHinweis": "Ist nach Eingabe der persönlichen Daten sichtbar."
+  }
+}

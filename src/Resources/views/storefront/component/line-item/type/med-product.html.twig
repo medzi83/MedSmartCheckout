@@ -1,0 +1,104 @@
+{% sw_extends '@Storefront/storefront/component/line-item/type/product.html.twig' %}
+
+{% block component_line_item_type_product %}
+    <li class="{{ lineItemClasses }}">
+
+        {% block component_line_item_type_product_inner %}
+            {% block component_line_item_type_product_row %}
+                <div class="row line-item-row">
+                    {% block component_line_item_type_product_row_inner %}
+                        {% block component_line_item_type_product_col_info %}
+                            <div class="line-item-info">
+                                {% block component_line_item_type_product_info_row %}
+                                    <div class="row line-item-row med-line-item">
+                                        {% set showLineItemModal = controllerAction is same as('confirmPage') %}
+
+                                        {% if nestingLevel < 1 %}
+                                            {% block component_line_item_type_product_image %}
+                                                
+                                                {{ parent() }}
+                                                        
+                                            {% endblock %}
+                                        {% endif %}
+
+                                        {% block component_line_item_type_product_details %}
+                                            {{ parent() }}
+                                        {% endblock %}
+
+                                        {% if showRemoveButton %}
+                                            {% block component_line_item_type_product_col_remove %}
+                                                {{ parent()}}
+                                            {% endblock %}
+                                        {% endif %}
+
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                        <div class="med-line-item-price">
+                        {% block component_line_item_type_product_col_quantity %}
+                            
+                            
+
+                            <div class="line-item-quantity">
+                            {{ 'checkout.medQuantity'|trans|sw_sanitize }}:
+                                {% sw_include '@Storefront/storefront/component/line-item/element/quantity.html.twig' %}
+                            </div>
+
+                        {% endblock %}
+                        
+                        {% if showTaxPrice %}
+                            {% block component_line_item_type_product_col_tax_price %}
+                                <div class="line-item-tax-price med-item-tax">
+                                    {% if context.salesChannel.taxCalculationType == 'horizontal' %}
+                                        {% if showTaxPrice %}
+                                            <div class="cart-header-tax-price">
+                                                {% if context.salesChannel.taxCalculationType == 'horizontal' %}
+                                                    {% if context.taxState == 'gross' %}
+                                                        {{ 'checkout.cartHeaderTaxIncludeVat'|trans|sw_sanitize }}:
+                                                    {% else %}
+                                                        {{ 'checkout.cartHeaderTaxExcludeVat'|trans|sw_sanitize }}:
+                                                    {% endif %}
+                                                {% endif %}
+                                            </div>
+                                        {% else %}
+                                            {% block component_checkout_cart_header_unit_price %}
+                                                {{ parent()}}
+                                            {% endblock %}
+                                        {% endif %}
+                                        {% sw_include '@Storefront/storefront/component/line-item/element/tax-price.html.twig' %}
+                                    {% endif %}
+                                </div>
+                            {% endblock %}
+                        {% else %}
+                            {% block component_line_item_type_product_col_unit_price %}
+                                {{ parent()}}
+                            {% endblock %}
+                        {% endif %}
+
+                        {% block component_line_item_type_product_col_total_price %}
+                            <div class="line-item-total-price line-item-price">
+                                <div class="cart-header-total-price">
+                                    {{ 'checkout.cartHeaderTotalPrice'|trans|sw_sanitize }}:
+                                </div>
+                                {% sw_include '@Storefront/storefront/component/line-item/element/total-price.html.twig' with {
+                                    currency: lineItem.order.currency.isoCode
+                                } %}
+                            </div>
+                        {% endblock %}
+                        </div>
+                        
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% if displayMode === 'order' %}
+                {% block component_line_item_type_product_downloads_table %}
+                    <div class="order-detail-content-list">
+                        {% sw_include '@Storefront/storefront/component/line-item/element/downloads.html.twig' %}
+                    </div>
+                {% endblock %}
+            {% endif %}
+        {% endblock %}
+    </li>
+{% endblock %}

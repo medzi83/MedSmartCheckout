@@ -1,0 +1,33 @@
+{
+    "name": "med/smart-checkout",
+    "description": "Smart Checkout Plugin für Shopware 6 zur Optimierung des Checkout-Prozesses",
+    "version": "1.1.1",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Medzech",
+            "email": "info@54north.solutions"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.6.* || 6.7.*",
+        "shopware/storefront": "6.6.* || 6.7.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Med\\SmartCheckout\\SmartCheckout",
+        "label": {
+            "de-DE": "Smart Checkout",
+            "en-GB": "Smart Checkout"
+        },
+        "description": {
+            "de-DE": "Optimiert den Checkout-Prozess durch Neuanordnung der Felder.",
+            "en-GB": "Optimizes the checkout process by rearranging fields."
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Med\\SmartCheckout\\": "src/"
+        }
+    }
+}

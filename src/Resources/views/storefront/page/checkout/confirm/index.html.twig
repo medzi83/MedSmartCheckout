@@ -1,0 +1,141 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/index.html.twig' %}
+ 
+
+{% block page_checkout_main_content %}
+        
+        {% block page_checkout_confirm %}
+                <div class="med-checkout-header">
+                        {% block page_checkout_confirm_header %}
+                        
+                                {{ parent() }}
+                        
+
+                        {% endblock %}
+                </div>
+                        {% block page_checkout_confirm_alerts %}
+                        
+
+                                {{ parent() }}
+
+                        
+                        {% endblock %}
+                
+                
+
+
+                {% block page_checkout_confirm_address %}
+                
+                        {{ parent() }}
+
+                {% endblock %}
+
+                {% block page_checkout_confirm_payment_shipping %}
+                
+                        {{ parent() }}
+
+                {% endblock %}
+
+                {% block page_checkout_confirm_product_table %}
+                <div class="confirm-product">
+                        {# Liste der Produkte #}
+                        <div class="headline-nr"><span class="points">3</span><h2 class="address-main-header">
+                                {{ 'checkout.medZusammenfassungHeader'|trans|sw_sanitize }}
+                        </h2>
+                        </div>
+                        {% block page_checkout_confirm_table_container %}
+                        <div class="card">
+                                <ul class="card-body list-unstyled med-cart">
+                                {% block page_checkout_confirm_table_header %}
+
+                                <div class="card-title">
+                                 {{ 'checkout.medCartHeaderInfo'|trans|sw_sanitize }}
+                                
+                                </div>
+                                       
+                                {% endblock %}
+                                
+                                {% block page_checkout_confirm_table_items %}
+                                        {% for lineItem in page.cart.lineItems %}
+                                        {% block page_checkout_confirm_table_item %}
+                                                {% sw_include '@Storefront/storefront/component/line-item/med-line-item.html.twig' with {
+                                                redirectTo: 'frontend.checkout.confirm.page',
+                                                showTaxPrice: true
+                                                } %}
+                                        {% endblock %}
+                                        {% endfor %}
+                                {% endblock %}
+                                
+                                </ul>
+                        </div>
+                        {% endblock %}
+                        {# Zusatzfelder #}
+                        {% block page_checkout_med_additional %}
+                                {% if config('core.cart.showCustomerComment') %}
+                                        <div class="checkout-additional">
+                                        {% block page_checkout_finish_customer_comment %}
+                                                {{ parent() }}
+                                        {% endblock %}
+                                        </div>
+                                {% endif %}
+                        {% endblock %}
+                        {# Zusammenfassung #}
+                        {% block page_checkout_aside_summary %}
+                                        <div class="checkout-aside-summary med-checkout-aside-summary">
+                                            {% block page_checkout_summary_header %}
+                                                <h2 class="checkout-aside-summary-header">
+                                                    {{ 'checkout.summaryHeader'|trans|sw_sanitize }}
+                                                </h2>
+                                            {% endblock %}
+
+                                            {% block page_checkout_summary_list %}
+                                                <div class="checkout-aside-summary-list-container">
+                                                    {% block page_checkout_summary_list_container %}
+                                                        {% sw_include '@Storefront/storefront/page/checkout/summary.html.twig' %}
+                                                    {% endblock %}
+                                                </div>
+                                            {% endblock %}
+                                        </div>
+                        {% endblock %}
+                        {# Zustimmung AGB #}
+                        {% block page_checkout_confirm_tos %}
+
+                                {{ parent() }}
+
+                        {% endblock %}
+
+                        {# Kaufbutton #}
+                        {% block page_checkout_aside_actions %}
+                                
+                                {{ parent() }}
+                                
+                        {% endblock %}
+
+                        
+                </div>
+                {% endblock %}
+
+                
+
+                {% block page_checkout_confirm_hidden_line_items_information %}
+                {% sw_include '@Storefront/storefront/component/checkout/hidden-line-items-information.html.twig' with {
+                        cart: page.cart,
+                        lineItems: page.cart.lineItems
+                } %}
+                {% endblock %}
+        {% endblock %}
+
+{% endblock %}
+
+
+
+
+
+{% block page_checkout_aside %}
+
+
+
+{% endblock %}
+
+{% block page_checkout_additional %}
+
+{% endblock %}
