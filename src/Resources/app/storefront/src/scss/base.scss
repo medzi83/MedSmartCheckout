@@ -162,9 +162,9 @@
 .points {
     background: color-mix(in srgb, var(--bs-primary) 20%, transparent);
     border: 1px solid;
-    
+    float: left;
     width: 2rem;
-    display: inline-block;
+    
     text-align: center;
     height: 2rem;
     vertical-align: bottom;
